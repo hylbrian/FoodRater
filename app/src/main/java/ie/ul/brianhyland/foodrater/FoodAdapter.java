@@ -34,7 +34,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         mFoods.add(0, new Food());
         notifyItemInserted(0);
         notifyItemChanged(0,mFoods.size());
-        mRecyclerView.getLayoutManager().scrollToPosition(0);
+        mRecyclerView.scrollToPosition(0);
 
 
     }
@@ -58,7 +58,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mFoods.size();
     }
 
     class FoodViewHolder extends RecyclerView.ViewHolder{
@@ -67,6 +67,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         private ImageView mImageView;
         private TextView mName;
         private RatingBar mRatingBar;
+
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.food_pic);
@@ -88,6 +89,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             });
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
+
                 @Override
                 public boolean onLongClick(View v) {
                     deleteFood(getAdapterPosition());
